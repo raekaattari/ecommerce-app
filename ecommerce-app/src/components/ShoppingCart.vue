@@ -16,19 +16,28 @@
                 <b-button variant="primary" @click="checkout" class="checkout-btn">Checkout</b-button>
             </div>
         </b-container>
+        <PaymentComp v-if="isCheckout"></PaymentComp>
     </div>
 </template>
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
 import ProductCard from './ProductCard.vue';
+import PaymentComp from './PaymentComp.vue';
+
 import NavbarComp from '@/components/NavbarComp.vue';
 
 export default {
     name: 'ShoppingCart',
+    data() {
+      return {
+        isCheckout: false
+      };
+    },
     components: {
         ProductCard,
         NavbarComp,
+        PaymentComp
     },
     computed: {
         ...mapGetters(['cartItems']),
@@ -36,7 +45,7 @@ export default {
     methods: {
         ...mapActions(['clearCart']),
         checkout() {
-            alert('Checkout functionality not implemented yet.');
+            this.isCheckout = true
         },
     },
 };
