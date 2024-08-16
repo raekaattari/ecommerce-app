@@ -1,8 +1,8 @@
 <template>
     <b-container>
       <b-row class="product-grid">
-        <b-col v-for="product in products" :key="product.id" cols="12" lg="6" class="mb-4">
-          <ProductCard :product="product" :isInCart="false"/>
+        <b-col v-for="product in products" :key="product.id" cols="12" lg="4" class="mb-4">
+          <ProductCard img-position="top" card-size="medium" :product="product" :isInCart="false"/>
         </b-col>
       </b-row>
     </b-container>

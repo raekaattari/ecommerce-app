@@ -1,7 +1,6 @@
 <template>
   <b-navbar toggleable="lg" type="light" variant="light" class="custom-navbar">
-    <b-navbar-brand href="/" class="navbar-logo">
-      <img src="path/to/your-logo.png" alt="eCommerce" />
+    <b-navbar-brand href="/" class="navbar-logo"> Cozy Threads
     </b-navbar-brand>
     <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
     <b-collapse id="nav-collapse" is-nav>
@@ -36,7 +35,7 @@ export default {
 }
 
 .navbar-logo img {
-  height: 40px;
+  height: 80px;
 }
 
 .nav-item {

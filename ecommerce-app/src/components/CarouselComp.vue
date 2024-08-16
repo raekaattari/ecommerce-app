@@ -23,30 +23,13 @@
   </template>
   
   <script>
+import { slides } from '@/data/carousel';
+
   export default {
     name: 'CarouselComp',
     data() {
       return {
-        slides: [
-          {
-            image: 'path/to/sustainability-image1.jpg',
-            alt: 'Sustainable Material 1',
-            title: 'Sustainable Material 1',
-            description: 'Description of sustainable material or practice.',
-          },
-          {
-            image: 'path/to/sustainability-image2.jpg',
-            alt: 'Sustainable Practice 2',
-            title: 'Sustainable Practice 2',
-            description: 'Description of another sustainable practice.',
-          },
-          {
-            image: 'path/to/sustainability-image3.jpg',
-            alt: 'Sustainable Initiative 3',
-            title: 'Sustainable Initiative 3',
-            description: 'Details about the initiative for sustainability.',
-          },
-        ],
+        slides: slides,
       };
     },
   };
@@ -58,28 +41,14 @@
   }
   
   .carousel-slide {
-    height: 400px;
-    background-size: cover;
-    background-position: center;
+    height: 300px;
   }
-  
+
   .carousel-caption {
     bottom: 20px;
-    left: 0;
-    right: 0;
     text-align: center;
-    color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.5);
-    padding: 20px;
-    border-radius: 8px;
+    color: #000000;
   }
   
-  .carousel-caption h3 {
-    font-size: 24px; /* Adjust heading size */
-    margin-bottom: 10px;
-  }
-  
-  .carousel-caption p {
-    font-size: 16px; /* Adjust description size */
-  }
+
   </style>

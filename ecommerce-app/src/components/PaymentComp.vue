@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      pk: '',
+      pk: process.env.VUE_APP_PK,
       elementsOptions: {
         appearance: {},
         clientSecret: null

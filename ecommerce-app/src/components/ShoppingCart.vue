@@ -4,19 +4,33 @@
 
         <b-container>
             <h2>My Cart</h2>
-            <b-container>
-                <b-row class="product-grid">
-                    <b-col v-for="product in cartItems" :key="product.id" cols="12" md="4" class="mb-4">
-                        <ProductCard :product="product" :isInCart="true" />
-                    </b-col>
-                </b-row>
-            </b-container>
+            <b-row>
+                <b-col class="product-grid" cols="12" md="4">
+                    <b-container>
+                        <b-row v-for="product in cartItems" :key="product.id" class="mb-4">
+                            <ProductCard :product="product" img-position="left" card-size="small" :isInCart="true" />
+                        </b-row>
+
+                    </b-container>
+                </b-col>
+                <b-col cols="12" md="4">
+                    <p> Thank you for shopping at Cozy Threads!</p>
+                    <p> Your total is: $ {{ totalCost }}</p>
+                </b-col>
+                <b-col v-if="isCheckout" cols="12" md="4">
+                    <PaymentComp cols="12" md="4"></PaymentComp>
+                </b-col>
+            </b-row>
+
             <div class="button-container">
-                <b-button variant="outline-secondary" @click="clearCart" class="clear-cart-btn">Clear Cart</b-button>
-                <b-button variant="primary" @click="checkout" class="checkout-btn">Checkout</b-button>
+                <b-button variant="outline-secondary" @click="clearCart" class="clear-cart-btn">Clear
+                    Cart</b-button>
+                <b-button v-if="!isCheckout" variant="primary" @click="checkout" class="checkout-btn">Checkout</b-button>
             </div>
         </b-container>
-        <PaymentComp v-if="isCheckout"></PaymentComp>
+
+
+
     </div>
 </template>
 
@@ -30,9 +44,9 @@ import NavbarComp from '@/components/NavbarComp.vue';
 export default {
     name: 'ShoppingCart',
     data() {
-      return {
-        isCheckout: false
-      };
+        return {
+            isCheckout: false
+        };
     },
     components: {
         ProductCard,
@@ -40,7 +54,7 @@ export default {
         PaymentComp
     },
     computed: {
-        ...mapGetters(['cartItems']),
+        ...mapGetters(['cartItems', 'totalCost']),
     },
     methods: {
         ...mapActions(['clearCart']),
@@ -58,7 +72,8 @@ export default {
     justify-content: space-between;
 }
 
-.clear-cart-btn, .checkout-btn {
+.clear-cart-btn,
+.checkout-btn {
     border-radius: 4px;
     font-weight: 500;
     font-size: 14px;
