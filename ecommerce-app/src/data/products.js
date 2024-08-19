@@ -32,6 +32,6 @@ export const products = [
         name: 'Shirt',
         description: 'Red shirt',
         image: require('@/assets/products/shirt2.jpg'),
-        price: 5000.0
+        price: 500.0
     },
 ];

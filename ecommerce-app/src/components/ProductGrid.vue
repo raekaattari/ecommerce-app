@@ -26,24 +26,4 @@
   </script>
   
   <style scoped>
-  .product-grid {
-    margin-top: 30px;
-  }
-  
-  .product-grid .b-col {
-    display: flex;
-    justify-content: center;
-  }
-  
-  .product-card {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    border-radius: 8px; 
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .product-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
-  }
   </style>

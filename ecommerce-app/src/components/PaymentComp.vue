@@ -7,7 +7,7 @@
       :elements-options="elementsOptions"
       :confirm-params="confirmParams" />
     <button @click="pay">Pay Now</button>
-  </div>
+    </div>
   </div>
 </template>
 
@@ -46,6 +46,7 @@ export default {
     pay() {
       console.log("paying")
       this.$refs.paymentRef.submit();
+      this.$emit("payment-success")
     },
   },
 };

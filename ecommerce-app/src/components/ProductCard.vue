@@ -1,7 +1,7 @@
 <template>
-    <b-card :class="['product-card', 'cardSizeClass']" :style="cardStyles" :img-src="product.image"
-        :img-alt="product.name" :img-top="imgPosition === 'top'" :img-left="imgPosition === 'left'"
-        @mouseover="hover = true" @mouseleave="hover = false">
+    <b-card :class="['product-card', 'cardSizeClass']" :style="[cardStyles, { 'aspect-ratio': aspectRatio }]"
+        :img-src="product.image" :img-alt="product.name" :img-top="imgPosition === 'top'"
+        :img-left="imgPosition === 'left'" @mouseover="hover = true" @mouseleave="hover = false">
 
         <b-card-title> {{ product.name }}</b-card-title>
 
@@ -13,9 +13,18 @@
         </b-card-text>
         <b-button variant="outline-secondary" v-show="!isInCart" @click="addToCart(product)" class="add-to-cart-btn">Add
             to Cart</b-button>
-        <span class="badge quantity-badge" v-show="isInCart">{{ product.quantity }}</span>
-        <b-button variant="outline-danger" v-show="isInCart" @click="removeFromCart(product.id)"
-            class="remove-from-cart-btn">Remove</b-button>
+        <div v-show="isInCart">
+            <span class="quantity-badge">Quantity: {{ product.quantity }}</span>
+        </div>
+        <div v-show="isInCart">
+            <button class="minimal-btn" @click="removeFromCart(product.id)">
+                <i class="bi bi-bag-dash"></i>
+            </button>
+            <button class="minimal-btn" @click="addToCart(product)">
+                <i class="bi bi-bag-plus"></i>
+            </button>
+        </div>
+
     </b-card>
 </template>
 
@@ -55,12 +64,12 @@ export default {
             return `card-size-${this.cardSize}`;
         },
         cardStyles() {
-            switch (this.cardSize) {
-                case 'small':
-                    return { width: '400px', height: '200px' };
-                default:
-                    return { width: '300px', height: '450px' };
-            }
+            return {
+                width: this.cardSize === 'small' ? '100%' : '100%',
+            };
+        },
+        aspectRatio() {
+            return this.cardSize === 'small' ? '6/3' : '4/5';
         },
     },
     methods: {
@@ -70,68 +79,42 @@ export default {
 </script>
 
 <style scoped>
-.product-card {
-    background-color: #ffffff;
-    border: 1px solid #e0e0e0;
-    transition: box-shadow 0.3s ease-in-out;
-    border-radius: 8px;
+:root {
+  --primary-color: #333333;
 }
 
-.product-card:hover {
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+.b-card-title, .b-card-text, .quantity-badge, .minimal-btn, .bi {
+  color: var(--primary-color);
 }
-
-.product-card .b-card-text {
-    font-size: 14px;
-    color: #666666;
-}
-
-.product-card .b-card-text {
-    font-size: 14px;
-    color: #666666;
-}
-
 .product-card img {
     max-width: 100%;
-    max-height: 200px;
+    max-height: 30vh;    
     object-fit: scale-down;
 }
 
 .product-card .add-to-cart-btn {
     margin-top: 10px;
     border-color: #e0e0e0;
-    color: #333333;
-    border-radius: 4px;
 }
 
 .product-card .add-to-cart-btn:hover {
     background-color: #f8f8f8;
 }
 
-.product-card .quantity-badge {
-    display: inline-block;
-    background-color: #e0e0e0;
-    color: #333333;
-    padding: 5px 10px;
-    border-radius: 12px;
-    font-size: 12px;
-    margin-top: 10px;
+.quantity-badge {
+    font-size: 14px;
+    padding: 0.5rem;
 }
 
-.product-card .remove-from-cart-btn {
-    margin-top: 10px;
-    border-color: #d9534f;
-    color: #d9534f;
-    border-radius: 4px;
-    font-size: 12px;
+.minimal-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    padding: 0.5rem;
 }
 
-.product-card .remove-from-cart-btn:hover {
-    background-color: #f8d7da;
+.minimal-btn:hover {
+    color: #ff7f7f;
 }
 
-.product-card .b-card-title {
-    font-size: 16px;
-    color: #333333;
-}
 </style>

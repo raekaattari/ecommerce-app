@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from 'vue-router';
 import HomePage from '@/views/HomePage.vue';
 import ShoppingCart from '@/components/ShoppingCart.vue';
-import PaymentComp from '@/components/PaymentComp.vue';
+import SuccessComp from '@/components/SuccessComp.vue';
 
 Vue.use(Router);
 
@@ -20,9 +20,9 @@ export default new Router({
             component: ShoppingCart,
         },
         {
-            path: '/checkout',
-            name: 'PaymentComp',
-            component: PaymentComp,
+            path: '/success',
+            name: 'SuccessComp',
+            component: SuccessComp,
         },
     ]
 });
