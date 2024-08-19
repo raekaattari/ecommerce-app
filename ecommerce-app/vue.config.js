@@ -9,6 +9,7 @@ module.exports = defineConfig({
         pathRewrite: { '^/create-payment-intent': '/create-payment-intent' },
       },
     },
-  }
+  },
+  outputDir: 'dist'
 })
 
