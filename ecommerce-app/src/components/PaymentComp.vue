@@ -13,7 +13,7 @@
 
 <script>
 import { StripeElementPayment } from '@vue-stripe/vue-stripe';
-import { apiCallToGeneratePaymentIntent } from '@/api/server.js';
+import { apiCallToGeneratePaymentIntent } from '@/services/payment-intent.js';
 import { mapGetters } from 'vuex';
 
 export default {
