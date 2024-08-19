@@ -4,7 +4,7 @@
       { "src": "api/server.js", "use": "@vercel/node" }
     ],
     "routes": [
-      { "src": "/api/create-payment-intent", "dest": "/api/server.js" }
+      { "src": "/api/server", "dest": "/api/server.js" }
     ]
   }
   
