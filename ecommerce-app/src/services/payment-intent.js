@@ -1,7 +1,7 @@
 export async function apiCallToGeneratePaymentIntent(cost) {
     try {
         console.log('in api call' + cost)
-        const response = await fetch('/create-payment-intent', {
+        const response = await fetch('/api/server', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
