@@ -10,7 +10,22 @@ module.exports = defineConfig({
       },
     },
   },
-  transpileDependencies: true,
-  outputDir: 'dist'
-})
-
+  outputDir: 'dist',
+  configureWebpack: {
+    output: {
+      filename: '[name].[chunkhash].js',
+      chunkFilename: '[name].[chunkhash].js',
+    },
+  },
+  chainWebpack: config => {
+    config.optimization.splitChunks({
+      cacheGroups: {
+        vendors: {
+          test: /[\\/]node_modules[\\/]/,
+          name: 'vendors',
+          chunks: 'all',
+        },
+      },
+    });
+  },
+});
